@@ -1,4 +1,5 @@
 use <MCAD/boxes.scad>
+use <MCAD/prism.scad>
 
 module cutShaft(x) {
 	rotate([90, 0, 0]) {
@@ -24,14 +25,20 @@ difference() {
 	cutShaft(27);
 	
 	// Cut extruder
-	translate([0, 13, 0])
+	translate([0, 13, 2])
 		cylinder(r=11.5, h=30, center=true, $fn=46);
-	translate([0, -13, 0])
+	translate([0, -13, 2])
 		cylinder(r=11.5, h=30, center=true, $fn=46);
+	translate([0, 13, -13])
+		cylinder(r=2.5, h=4, center=true, $fn=10);
+	translate([0, -13, -13])
+		cylinder(r=2.5, h=4, center=true, $fn=10);
 
 	// Cut fan slots
-	translate([0, -32.5, 1])
+	translate([0, -32.5, 2])
 		cube([30, 10, 30], center=true);
-	translate([0, 32.5, 1])
+	translate([0, 32.5, 2])
 		cube([30, 10, 30], center=true);
+
+	
 }
