@@ -21,9 +21,9 @@ module cutShaft(x) {
 
 module airDuct(y1, y2) {
 	polyhedron(
-		points=[[ 15, y1, -12], [-15, y1, -12], 
+		points=[[ 14, y1, -12], [-14, y1, -12], 
 				  [-10, y2, -12], [ 10, y2, -12],
-				  [ 15, y1,  15], [-15, y1,  15], 
+				  [ 14, y1,  15], [-14, y1,  15], 
 				  [-10, y2,  15], [ 10, y2,  15]],
 				  
 		faces=[[3, 2, 1, 0], [0, 1, 5, 4], [1, 2, 6, 5],
@@ -41,9 +41,6 @@ module airDuct(y1, y2) {
 module grillSlot(y) {
 	translate([0, y, 4])
 		cube([28, 5, 30], center=true);
-
-	translate([0, y, 2])
-		cube([32, 1.5, 30], center=true);
 }
 
 difference() {
@@ -63,14 +60,14 @@ difference() {
 		cylinder(r=2.5, h=4, center=true, $fn=10);
 
 	// Cut fan slots
-	translate([0, -32.5, 2])
-		cube([30, 10, 30], center=true);
-	translate([0, 32.5, 2])
-		cube([30, 10, 30], center=true);
+	translate([0, -33.5, 2])
+		cube([32, 10.5, 30], center=true);
+	translate([0, 33.5, 2])
+		cube([32, 10.5, 30], center=true);
 
 	// Cut air ducts
-	airDuct(-27.5, -20);
-	airDuct( 27.5,  20);
+	airDuct(-28.5, -20);
+	airDuct( 28.5,  20);
 
 	// Cut fan grill slots
 	grillSlot(38);
@@ -78,12 +75,12 @@ difference() {
 		grillSlot(38);
 
 	// Make screwholes
-	translate([-36,  36, 0]) cylinder(r=2, h=31, center=true, $fn=8);
-	translate([-12,   0, 0]) cylinder(r=2, h=31, center=true, $fn=8);
-	translate([-36, -36, 0]) cylinder(r=2, h=31, center=true, $fn=8);
-	translate([ 36, -36, 0]) cylinder(r=2, h=31, center=true, $fn=8);
-	translate([ 12,   0, 0]) cylinder(r=2, h=31, center=true, $fn=8);
-	translate([ 36,  36, 0]) cylinder(r=2, h=31, center=true, $fn=8);
+	translate([-36,  36, 0]) cylinder(r=1.5, h=31, center=true, $fn=6);
+	translate([-12,   0, 0]) cylinder(r=1.5, h=31, center=true, $fn=6);
+	translate([-36, -36, 0]) cylinder(r=1.5, h=31, center=true, $fn=6);
+	translate([ 36, -36, 0]) cylinder(r=1.5, h=31, center=true, $fn=6);
+	translate([ 12,   0, 0]) cylinder(r=1.5, h=31, center=true, $fn=6);
+	translate([ 36,  36, 0]) cylinder(r=1.5, h=31, center=true, $fn=6);
 
 	//fanGrill(-40);
 	//fanGrill(40);
